@@ -8,11 +8,8 @@ import { Calendar, MapPin, Clock, Ticket, ChevronLeft, ChevronRight, X, Star, Di
 
 export default function TheaterHomePage() {
   const [currentPage, setCurrentPage] = useState(1)
-  const [selectedImage, setSelectedImage] = useState<{
-    image: string
-    title: string
-    category: string
-  } | null>(null)
+  const [currentPerformancePage, setCurrentPerformancePage] = useState(1)
+  const [selectedImage, setSelectedImage] = useState< string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -25,67 +22,263 @@ export default function TheaterHomePage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const photosPerPage = 8
+  const photosPerPage = 13
   const allPhotos = [
-    {
-      image: "/IMG_4267.JPG",
-      title: "아랫것들의 위 공연 장면",
-      category: "지난 공연",
-      height: "h-80",
-    },
-    {
-      image: "/IMG_4268.JPG",
-      title: "극단 큰강 단체 사진",
-      category: "비하인드",
-      height: "h-64",
-    },
-    {
-      image: "/IMG_4269.JPG",
-      title: "한 여름 밤의 꿈 포스터",
-      category: "현재 공연",
-      height: "h-96",
-    },
-    {
-      image: "/IMG_4270.JPG",
-      title: "제2막 '빛'추다 공연",
-      category: "지난 공연",
-      height: "h-72",
-    },
-    {
-      image: "/IMG_4271.JPG",
-      title: "그때, 우리는 공연 장면",
-      category: "지난 공연",
-      height: "h-56",
-    },
-    {
-      image: "/IMG_4272.JPG",
-      title: "연습실에서의 리허설",
-      category: "리허설",
-      height: "h-88",
-    },
-    {
-      image: "/IMG_4273.JPG",
-      title: "무대 세트 준비",
-      category: "비하인드",
-      height: "h-64",
-    },
-    {
-      image: "/IMG_4274.JPG",
-      title: "배우들의 연기 연습",
-      category: "연습",
-      height: "h-80",
-    },
-    {
-      image: "/IMG_4275.JPG",
-      title: "공연 후 커튼콜",
-      category: "공연",
-      height: "h-72",
-    },
+    "/	IMG_4268.JPG		",
+    "/	IMG_4276.JPG		",
+    "/	IMG_4277.JPG		",
+    "/	IMG_4278.JPG		",
+    "/	IMG_4279.JPG		",
+    "/	IMG_4280.JPG		",
+    "/	IMG_4281.JPG		",
+    "/	IMG_4282.JPG		",
+    "/	IMG_4283.JPG		",
+    "/	IMG_4284.JPG		",
+    "/	IMG_4285.JPG		",
+    "/	IMG_4286.JPG		",
+    "/	IMG_4287.JPG		",
+    "/	IMG_4288.JPG		",
+    "/	IMG_4289.JPG		",
+    "/	IMG_4290.JPG		",
+    "/	IMG_4291.JPG		",
+    "/	IMG_4292.JPG		",
+    "/	IMG_4293.JPG		",
+    "/	IMG_4294.JPG		",
+    "/	IMG_4295.JPG		",
+    "/	IMG_4296.JPG		",
+    "/	IMG_4297.JPG		",
+    "/	IMG_4298.JPG		",
+    "/	IMG_4299.JPG		",
+    "/	IMG_4300.JPG		",
+    "/	IMG_4301.JPG		",
+    "/	IMG_4302.JPG		",
+    "/	IMG_4303.JPG		",
+    "/	IMG_4304.JPG		",
+    "/	IMG_4305.JPG		",
+    "/	IMG_4306.JPG		",
+    "/	IMG_4307.JPG		",
+    "/	IMG_4308.JPG		",
+    "/	IMG_4309.JPG		",
+    "/	IMG_4310.JPG		",
+    "/	IMG_4311.JPG		",
+    "/	IMG_4312.JPG		",
+    "/	IMG_4313.JPG		",
+    "/	IMG_4314.JPG		",
+    "/	IMG_4315.JPG		",
+    "/	IMG_4316.JPG		",
+    "/	IMG_4317.JPG		",
+    "/	IMG_4318.JPG		",
+    "/	IMG_4319.JPG		",
+    "/	IMG_4320.JPG		",
+    "/	IMG_4321.JPG		",
+    "/	IMG_4322.JPG		",
+    "/	IMG_4323.JPG		",
+    "/	IMG_4324.JPG		",
+    "/	IMG_4325.JPG		",
+    "/	IMG_4326.JPG		",
+    "/	IMG_4335.JPG		",
+    "/	IMG_4336.JPG		",
+    "/	IMG_4337.JPG		",
+    "/	IMG_4338.JPG		",
+    "/	IMG_4339.JPG		",
+    "/	IMG_4340.JPG		",
+    "/	IMG_4341.JPG		",
+    "/	IMG_4342.JPG		",
+    "/	IMG_4343.JPG		",
+    "/	IMG_4344.JPG		",
+    "/	IMG_4345.JPG		",
+    "/	IMG_4346.JPG		",
+    "/	IMG_4347.JPG		",
+    "/	IMG_4348.JPG		",
+    "/	IMG_4349.JPG		",
+    "/	IMG_4350.JPG		",
+    "/	IMG_4351.JPG		",
+    "/	IMG_4352.JPG		",
+    "/	IMG_4353.JPG		",
+    "/	IMG_4354.JPG		",
+    "/	IMG_4355.JPG		",
+    "/	IMG_4356.JPG		",
+    "/	IMG_4357.JPG		",
+    "/	IMG_4358.JPG		",
+    "/	IMG_4359.JPG		",
+    "/	IMG_4360.JPG		",
+    "/	IMG_4361.JPG		",
+    "/	IMG_4362.JPG		",
+    "/	IMG_4363.JPG		",
+    "/	IMG_4364.JPG		",
+    "/	IMG_4365.JPG		",
+    "/	IMG_4366.JPG		",
+    "/	IMG_4367.JPG		",
+    "/	IMG_4368.JPG		",
+    "/	IMG_4369.JPG		",
+    "/	IMG_4370.JPG		",
+    "/	IMG_4371.JPG		",
+    "/	IMG_4372.JPG		",
+    "/	IMG_4373.JPG		",
+    "/	IMG_4374.JPG		",
+    "/	IMG_4375.JPG		",
+    "/	IMG_4376.JPG		",
+    "/	IMG_4377.JPG		",
+    "/	IMG_4378.JPG		",
+    "/	IMG_4379.JPG		",
+    "/	IMG_4380.JPG		",
+    "/	IMG_4381.JPG		",
+    "/	IMG_4382.JPG		",
   ]
 
   const totalPages = Math.ceil(allPhotos.length / photosPerPage)
   const startIndex = (currentPage - 1) * photosPerPage
   const currentPhotos = allPhotos.slice(startIndex, startIndex + photosPerPage)
+
+  const performancePerPage = 6
+  const allPerformances = [
+    {
+      title: "아랫것들의 위",
+      slug: "those-below-above",
+      startDate: "2025년 3월 7일",
+      endDate: "2025년 3월 9일",
+      venue: "소극장 혜화당",
+      image: "/IMG_4267.JPG",
+      description: "쓰레기로 뒤덮인 세상 속, 공허함과 희망",
+      details: "쓰레기로 뒤덮인 세상 속에서 인간의 공허함과 희망을 그린 작품으로, 현대 사회의 단면을 날카롭게 묘사합니다.",
+    },
+    {
+      title: "제2막 '빛'추다",
+      slug: "act-2-chasing-light",
+      startDate: "2024년 10월 19일",
+      endDate: "2024년 10월 20일",
+      venue: "단막극장",
+      image: "/IMG_4270.JPG",
+      description: "사랑과 오해를 현대적으로 풀어낸 유쾌한 '십이야'",
+      details:
+        "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석해, 유쾌함 속에 숨은 진심을 그립니다.",
+    },
+    {
+      title: "그때, 우리는",
+      slug: "back-then-we-were",
+      startDate: "2024년 5월 18일",
+      endDate: "2024년 5월 19일",
+      venue: "단막극장",
+      image: "/IMG_4271.JPG",
+      description: "스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억.",
+      details: "스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억을 담은 이야기입니다.",
+    },
+    {
+      title: "감자 후라이",
+      slug: "french-fries",
+      startDate: "2023년 12월 16일",
+      endDate: "2023년 12월 17일",
+      venue: "SK소극장",
+      image: "/IMG_4272.JPG",
+      description: "사랑에 속아 돈마저 잃은 인간 군상의 희비극",
+      details: "사랑에 속아 돈마저 잃은 인간 군상의 희비극을 그린 작품으로, 현대 사회의 단면을 유머러스하게 풀어냅니다.",
+    },
+    {
+      title: "혜화동",
+      slug: "hyehwa-dong",
+      startDate: "2023년 7월 8일",
+      endDate: "2023년 7월 9일",
+      venue: "뜻밖의 극장",
+      image: "/IMG_4273.JPG",
+      description: "소박한 시골 마을에서 삶과 죽음, 사랑의 의미를 담담하게 그린 이야기.",
+      details: "소박한 시골 마을에서 삶과 죽음, 사랑의 의미를 담담하게 그린 이야기로, 인간 존재의 본질을 탐구합니다.",
+    },
+    {
+      title: "아랫것들의 위",
+      slug: "those-below-above-0",
+      startDate: "2023년 1월 28일",
+      endDate: "2023년 1월 29일",
+      venue: "서완소극장",
+      image: "/IMG_4274.JPG",
+      description: "쓰레기로 뒤덮인 세상 속, 공허함과 희망",
+      details: "쓰레기로 뒤덮인 세상 속에서 인간의 공허함과 희망을 그린 작품으로, 현대 사회의 단면을 날카롭게 묘사합니다.",
+    },
+    {
+      title: "뮤죄",
+      slug: "mujue",
+      startDate: "2022년 8월 27일",
+      endDate: "2022년 8월 28일",
+      venue: "성균소극장",
+      image: "/IMG_4275.JPG",
+      description: "살인사건 배심원들의 치열한 토론 속에서 드러나는 편견과 진실의 힘.",
+      details: "살인사건 배심원들의 치열한 토론 속에서 드러나는 편견과 진실의 힘을 그린 작품으로, 인간 심리의 복잡함을 탐구합니다.",
+    },
+    {
+      title: "The truth",
+      slug: "the-truth",
+      startDate: "2022년 3월 26일",
+      endDate: "2022년 3월 27일",
+      venue: "성균소극장",
+      image: "/IMG_4327.JPG",
+      description: "마녀사냥에 휩싸인 마을에서 광기와 진실이 맞부딪히는 이야기.",
+      details: "마녀사냥에 휩싸인 마을에서 광기와 진실이 맞부딪히는 이야기를 통해 인간의 본성과 사회의 어두운 면을 조명합니다.",
+    },
+    {
+      title: "사랑에 속고 돈에 울고",
+      slug: "french-fries-0",
+      startDate: "2021년 3월 20일",
+      endDate: "2021년 3월 21일",
+      venue: "창조소극장",
+      image: "/IMG_4328.JPG",
+      description: "사랑에 속아 돈마저 잃은 인간 군상의 희비극",
+      details: "사랑에 속아 돈마저 잃은 인간 군상의 희비극을 그린 작품으로, 현대 사회의 단면을 유머러스하게 풀어냅니다.",
+    },
+    {
+      title: "한 여름 밤의 꿈",
+      slug: "midsummer-nights-dream-0",
+      startDate: "2020년 9월 5일",
+      endDate: "2020년 9월 6일",
+      venue: "소극장 봄",
+      image: "/IMG_4329.JPG",
+      description: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품",
+      details: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품으로, 사랑과 질투, 혼란과 변신이 뒤엉킨 이야기를 담고 있습니다.",
+    },
+    {
+      title: "한 여름 밤의 꿈",
+      slug: "midsummer-nights-dream-1",
+      startDate: "2020년 7월 18일",
+      endDate: "2020년 7월 19일",
+      venue: "소극장 봄",
+      image: "/IMG_4331.JPG",
+      description: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품",
+      details: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품으로, 사랑과 질투, 혼란과 변신이 뒤엉킨 이야기를 담고 있습니다.",
+    },
+    {
+      title: "십이야",
+      slug: "twelfth-night-0",
+      startDate: "2020년 5월 2일",
+      endDate: "2020년 5월 3일",
+      venue: "소극장 봄",
+      image: "/IMG_4330.JPG",
+      description: "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석한 작품",
+      details: "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석한 작품으로, 유쾌함 속에 숨은 진심을 그립니다.",
+    },
+  {
+      title: "십이야",
+      slug: "twelfth-night-1",
+      startDate: "2020년 3월 14일",
+      endDate: "2020년 3월 15일",
+      venue: "소극장 봄",
+      image: "/IMG_4333.JPG",
+      description: "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석한 작품",
+      details: "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석한 작품으로, 유쾌함 속에 숨은 진심을 그립니다.",
+    },
+    {
+      title: "네 잘못이 아냐",
+      slug: "not-your-fault",
+      startDate: "2019년 9월 21일",
+      endDate: "2019년 9월 2일",
+      venue: "소극장 봄",
+      image: "/IMG_4332.JPG",
+      description: "네 잘못이 아냐는 창작극",
+      details: "네 잘못이 아냐는 창작극으로, 인간의 본성과 사회의 어두운 면을 조명하는 이야기입니다.",
+    },
+  ]
+
+  const totalPerformancePages = Math.ceil(allPerformances.length / performancePerPage)
+  const startPerformanceIndex = (currentPerformancePage - 1) * performancePerPage
+  const currentPerformances = allPerformances.slice(startPerformanceIndex, startPerformanceIndex + performancePerPage)
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -222,39 +415,7 @@ export default function TheaterHomePage() {
         <div className="container mx-auto px-4">
           <h2 className="font-manrope text-3xl font-bold text-center mb-12">지난 공연</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              {
-                title: "아랫것들의 위",
-                slug: "those-below-above",
-                startDate: "2025년 3월 7일",
-                endDate: "2025년 3월 9일",
-                venue: "소극장 혜화당",
-                image: "/IMG_4267.JPG",
-                description: "쓰레기로 뒤덮인 세상 속, 공허함과 희망",
-                details: "",
-              },
-              {
-                title: "제2막 '빛'추다",
-                slug: "act-2-chasing-light",
-                startDate: "2024년 10월 19일",
-                endDate: "2024년 10월 20일",
-                venue: "단막극장",
-                image: "/IMG_4270.JPG",
-                description: "사랑과 오해를 현대적으로 풀어낸 유쾌한 '십이야'",
-                details:
-                  "사랑과 오해가 뒤엉킨 셰익스피어의 '십이야'를 현대적으로 재해석해, 유쾌함 속에 숨은 진심을 그립니다.",
-              },
-              {
-                title: "그때, 우리는",
-                slug: "back-then-we-were",
-                startDate: "2024년 5월 18일",
-                endDate: "2024년 5월 19일",
-                venue: "단막극장",
-                image: "/IMG_4271.JPG",
-                description: "스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억.",
-                details: "스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억을 담은 이야기입니다.",
-              },
-            ].map((performance, index) => (
+            {currentPerformances.map((performance, index) => (
               <Card
                 key={index}
                 className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
@@ -290,6 +451,43 @@ export default function TheaterHomePage() {
               </Card>
             ))}
           </div>
+          <div className="flex justify-center items-center mt-12 space-x-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPerformancePage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPerformancePage === 1}
+                className="flex items-center"
+              >
+                <ChevronLeft className="mr-1 w-4 h-4" />
+                이전
+              </Button>
+
+              <div className="flex items-center space-x-2">
+                {Array.from({ length: totalPerformancePages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPerformancePage === page ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setCurrentPerformancePage(page)}
+                    className="w-10 h-10"
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPerformancePage((prev) => Math.min(prev + 1, totalPerformancePages))}
+                disabled={currentPerformancePage === totalPerformancePages}
+                className="flex items-center"
+              >
+                다음
+                <ChevronRight className="ml-1 w-4 h-4" />
+              </Button>
+            </div>
         </div>
       </section>
 
@@ -341,28 +539,19 @@ export default function TheaterHomePage() {
           </p>
 
           <div className="max-w-7xl mx-auto">
-            <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+            <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-2 space-y-2">
               {currentPhotos.map((photo, index) => (
                 <div
                   key={index}
-                  className="break-inside-avoid mb-6 group cursor-pointer"
+                  className="break-inside-avoid mb-2 group cursor-pointer"
                   onClick={() => setSelectedImage(photo)}
                 >
                   <div className="relative overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-lg transition-all duration-300">
-                    <div className={`${photo.height} overflow-hidden`}>
                       <img
-                        src={photo.image || "/placeholder.svg"}
-                        alt={photo.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src={photo || "/placeholder.svg"}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="text-xs font-medium mb-1 text-white/80">{photo.category}</div>
-                        <div className="text-sm font-manrope font-semibold">{photo.title}</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               ))}
             </div>
@@ -426,8 +615,7 @@ export default function TheaterHomePage() {
               <X className="w-4 h-4" />
             </Button>
             <img
-              src={selectedImage.image || "/placeholder.svg"}
-              alt={selectedImage.title}
+              src={selectedImage || "/placeholder.svg"}
               className="max-h-[90vh] max-w-full object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
@@ -444,9 +632,15 @@ export default function TheaterHomePage() {
               극단 큰강에 대해 궁금한 점이 있으시면 언제든지 문의해주세요.
             </p>
             <div className="mt-12">
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Ticket className="mr-2 w-4 h-4" />
-                문의하기
+              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+                <a
+                  href="https://www.somoim.co.kr/51b64868-5f6b-11e9-adec-0a10bedf2a181"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Ticket className="mr-2 w-4 h-4" />
+                  문의하기
+                </a>
               </Button>
             </div>
           </div>
