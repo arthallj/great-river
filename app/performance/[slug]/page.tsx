@@ -1,3 +1,9 @@
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 const performances = {
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",
@@ -289,12 +295,6 @@ export function generateStaticParams() {
   return Object.keys(performances).map((slug) => ({ slug }))
 }
 export const dynamicParams = false
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 
 export default async function PerformanceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -375,15 +375,20 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   </CardHeader>
                   <CardContent>
                     <div className="prose prose-gray max-w-none">
-                      <img
-                          src={performance.image}
-                          alt={performance.title}
-                        />
+                      <Image
+                        src={performance.image || "/placeholder.svg"}
+                        alt={performance.title}
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain rounded-md"
+                      />
                       {performance.fullDescription.split("\n\n").map((paragraph, index) => (
                         <p key={index} className="text-muted-foreground leading-relaxed mb-4">
                           {paragraph}
                           <br></br>
-                          <a href={performance.link} target="_blank">{performance.link}</a>
+                          {performance.link && (
+                            <a href={performance.link} target="_blank" rel="noopener noreferrer">{performance.link}</a>
+                          )}
                         </p>
                       ))}
                     </div>
@@ -483,29 +488,23 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   <CardContent>
                     <div className="space-y-3">
                       {relatedPerformances.map((relatedPerf) => (
-                        <div
-                          key={relatedPerf.slug}
-                          className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg cursor-pointer hover:bg-muted/50 transition-colors"
-                          // onClick={() => router.push(`/performance/${relatedPerf.slug}`)}
-                        >
                         <Link
-                            key={relatedPerf.slug}
-                            href={`/performance/${relatedPerf.slug}`}
-                            className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <Image
-                              src={relatedPerf.image || "/placeholder.svg"}
-                              alt={relatedPerf.title}
-                              width={50}
-                              height={50}
-                              className="w-12 h-12 object-cover rounded"
-                            />
-                            <div className="flex-1">
-                              <div className="font-medium text-sm">{relatedPerf.title}</div>
-                              <div className="text-xs text-muted-foreground">{relatedPerf.description}</div>
-                            </div>
-                          </Link>
-                        </div>
+                          key={relatedPerf.slug}
+                          href={`/performance/${relatedPerf.slug}`}
+                          className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
+                        >
+                          <Image
+                            src={relatedPerf.image || "/placeholder.svg"}
+                            alt={relatedPerf.title}
+                            width={50}
+                            height={50}
+                            className="w-12 h-12 object-cover rounded"
+                          />
+                          <div className="flex-1">
+                            <div className="font-medium text-sm">{relatedPerf.title}</div>
+                            <div className="text-xs text-muted-foreground">{relatedPerf.description}</div>
+                          </div>
+                        </Link>
                       ))}
                     </div>
                   </CardContent>

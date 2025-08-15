@@ -5,12 +5,11 @@
   "homepage": "https://arthallj.github.io/great-river",
   "scripts": {
     "build": "next build",
-    "export": "next export",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "predeploy": "npm run build && cp -f out/index.html out/404.html",
-    "deploy": "gh-pages -b gh-pages -d out -f"
+    "predeploy": "npm run build && touch out/.nojekyll && cp -f out/index.html out/404.html",
+    "deploy": "gh-pages -b gh-pages -d out -f --dotfiles"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
