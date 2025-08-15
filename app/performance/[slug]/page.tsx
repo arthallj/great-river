@@ -13,72 +13,78 @@ export default function PerformanceDetailPage() {
   const slug = params.slug as string
 
   const performances = {
-    hamlet: {
-      title: "햄릿",
-      startDate: "2024년 12월 15일",
-      endDate: "2025년 1월 31일",
-      venue: "아르테 소극장 (서울 종로구)",
-      image: "/hamlet-theater.png",
-      description: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 아르테의 대표작",
-      fullDescription: `복수와 광기, 사랑과 배신이 얽힌 덴마크 왕자의 이야기를 현대적 무대 연출과 함께 선보입니다. 인간 내면의 갈등을 깊이 있게 탐구한 작품입니다.
+    "midsummer-nights-dream": {
+      title: "한 여름 밤의 꿈",
+      startDate: "2025년 8월 23일",
+      endDate: "2025년 8월 24일",
+      venue: "극장 봄",
+      image: "/IMG_4269.JPG",
+      description: "셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품",
+      fullDescription: `사랑과 질투, 혼란과 변신이 뒤엉킨 셰익스피어의 고전을 배우 극단의 무대 뒤를 배경으로 재해석했습니다. 무대와 현실이 뒤섞이는 순간, 연극 속 연극의 매혹이 펼쳐집니다.
 
-극단 아르테만의 독창적인 해석으로 고전의 무게감과 현대적 감각을 절묘하게 조화시켰습니다. 특히 "To be or not to be" 독백 장면에서의 혁신적인 연출과 무대 디자인은 관객들에게 깊은 인상을 남기고 있습니다.
+아테네의 숲에서 벌어지는 요정들과 인간들의 사랑 이야기를 현대적 감각으로 풀어낸 작품입니다. 환상적인 무대 연출과 유쾌한 코미디로 관객들에게 즐거움과 웃음을 선사합니다.
 
 현재 공연 중인 이 작품은 매회 매진을 기록하며 뜨거운 관심을 받고 있습니다.`,
-      cast: ["김연극 (햄릿)", "이무대 (오필리아)", "박연기 (클로디우스)", "최드라마 (거트루드)"],
+      cast: ["김연극 (라이샌더)", "이무대 (허미아)", "박연기 (디미트리우스)", "최드라마 (퍽)"],
       director: "김예술",
-      runtime: "2시간 50분 (인터미션 포함)",
-      audience: "15세 이상 관람가",
-      ticketPrice: "일반 40,000원 / 학생 30,000원",
+      runtime: "2시간 15분 (인터미션 포함)",
+      audience: "전체 관람가",
+      ticketPrice: "일반 35,000원 / 학생 25,000원",
       isCurrentShow: true,
     },
-    "romeo-and-juliet": {
-      title: "로미오와 줄리엣",
-      startDate: "2024년 3월 15일",
-      endDate: "2024년 4월 30일",
-      venue: "아르테 소극장",
-      image: "/romeo-and-juliet-romantic-scene.png",
-      description: "영원한 사랑 이야기의 새로운 해석",
-      fullDescription: `셰익스피어의 불멸의 사랑 이야기를 현대적 감각으로 재해석한 작품입니다. 베로나의 두 가문 사이의 갈등 속에서 피어난 순수한 사랑을 통해 화해와 용서의 메시지를 전달했습니다.
+    "those-below-above": {
+      title: "아랫것들의 위",
+      startDate: "2025년 3월 7일",
+      endDate: "2025년 3월 9일",
+      venue: "소극장 혜화당",
+      image: "/IMG_4267.JPG",
+      description: "쓰레기로 뒤덮인 세상 속, 공허함과 희망",
+      fullDescription: `현대 사회의 계층 구조와 소외감을 날카롭게 그려낸 창작 연극입니다. 쓰레기로 뒤덮인 세상에서 살아가는 사람들의 이야기를 통해 현실의 모순과 희망을 동시에 보여줍니다.
 
-극단 아르테만의 독창적인 연출로 고전 작품에 새로운 생명을 불어넣었으며, 젊은 배우들의 열정적인 연기가 관객들의 마음을 사로잡았습니다. 특히 발코니 장면에서의 혁신적인 무대 연출은 많은 찬사를 받았습니다.`,
-      cast: ["김연극 (로미오)", "이무대 (줄리엣)", "박연기 (머큐쇼)", "최드라마 (티볼트)"],
-      director: "김예술",
-      runtime: "2시간 30분 (인터미션 포함)",
+극단 큰강의 독창적인 연출로 무거운 주제를 관객들이 쉽게 공감할 수 있도록 풀어냈습니다. 특히 무대 위 쓰레기 더미 속에서 피어나는 인간애의 모습이 깊은 감동을 주었습니다.
+
+사회적 메시지와 예술성을 모두 갖춘 의미 있는 작품으로 평가받았습니다.`,
+      cast: ["김연극 (민수)", "이무대 (영희)", "박연기 (철수)", "최드라마 (순이)"],
+      director: "이연출",
+      runtime: "1시간 50분",
+      audience: "15세 이상 관람가",
+      ticketPrice: "일반 25,000원 / 학생 15,000원",
+      isCurrentShow: false,
+    },
+    "act-2-chasing-light": {
+      title: "제2막 '빛'추다",
+      startDate: "2024년 10월 19일",
+      endDate: "2024년 10월 20일",
+      venue: "단막극장",
+      image: "/IMG_4270.JPG",
+      description: "사랑과 오해를 현대적으로 풀어낸 유쾌한 '십이야'",
+      fullDescription: `셰익스피어의 '십이야'를 현대적으로 재해석한 작품입니다. 사랑과 오해가 뒤엉킨 이야기를 유쾌함 속에 숨은 진심을 그려내며 관객들에게 웃음과 감동을 선사했습니다.
+
+성별을 바꾼 주인공의 정체성 혼란과 사랑의 착각을 통해 현대 사회의 다양성과 포용에 대한 메시지를 담았습니다. 코미디 요소와 진지한 주제 의식이 절묘하게 조화를 이룬 작품입니다.
+
+젊은 배우들의 에너지 넘치는 연기와 창의적인 무대 연출이 돋보였던 공연이었습니다.`,
+      cast: ["박연기 (비올라)", "김연극 (오시노)", "이무대 (올리비아)", "최드라마 (세바스찬)"],
+      director: "박무대",
+      runtime: "2시간 10분 (인터미션 포함)",
       audience: "전체 관람가",
       ticketPrice: "일반 30,000원 / 학생 20,000원",
       isCurrentShow: false,
     },
-    macbeth: {
-      title: "맥베스",
-      startDate: "2024년 5월 10일",
-      endDate: "2024년 6월 25일",
-      venue: "대학로 예술극장",
-      image: "/macbeth-performance.png",
-      description: "권력과 야망의 어두운 면을 그린 걸작",
-      fullDescription: `스코틀랜드의 장군 맥베스가 왕위에 대한 야망으로 파멸에 이르는 과정을 그린 비극입니다. 권력욕과 죄책감, 그리고 운명에 대한 깊이 있는 탐구를 선보였습니다.
+    "back-then-we-were": {
+      title: "그때, 우리는",
+      startDate: "2024년 5월 18일",
+      endDate: "2024년 5월 19일",
+      venue: "단막극장",
+      image: "/IMG_4271.JPG",
+      description: "스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억",
+      fullDescription: `스물네 살 여름, 춘천에서 마주한 사랑과 이별의 기억을 담은 감성적인 창작 연극입니다. 청춘의 아름다움과 아픔을 섬세하게 그려내며 관객들의 마음을 울렸습니다.
 
-어둠과 광기, 그리고 초자연적 요소들이 어우러진 무대는 관객들에게 강렬한 인상을 남겼습니다. 특히 마녀들의 예언 장면과 맥베스 부인의 몽유병 장면은 압도적인 연기력으로 많은 호평을 받았습니다.`,
-      cast: ["박연기 (맥베스)", "이무대 (맥베스 부인)", "김연극 (맥더프)", "최드라마 (뱅코)"],
-      director: "이연출",
-      runtime: "2시간 45분 (인터미션 포함)",
-      audience: "15세 이상 관람가",
-      ticketPrice: "일반 35,000원 / 학생 25,000원",
-      isCurrentShow: false,
-    },
-    "midsummer-nights-dream": {
-      title: "한여름 밤의 꿈",
-      startDate: "2024년 7월 5일",
-      endDate: "2024년 8월 20일",
-      venue: "종로문화센터 대극장",
-      image: "/midsummer-nights-dream-performance.png",
-      description: "환상적이고 유쾌한 마법의 세계",
-      fullDescription: `아테네의 숲에서 벌어지는 요정들과 인간들의 사랑 이야기입니다. 환상적인 무대 연출과 유쾌한 코미디로 관객들에게 즐거움과 웃음을 선사했습니다.
+첫사랑의 설렘과 이별의 아픔, 그리고 시간이 흘러 다시 만난 두 사람의 이야기를 통해 사랑의 의미와 성장에 대해 이야기합니다. 춘천의 아름다운 풍경을 배경으로 한 서정적인 무대가 인상적이었습니다.
 
-마법과 현실이 교차하는 환상적인 무대 위에서 펼쳐지는 사랑의 혼란과 화해의 이야기는 모든 연령대의 관객들에게 사랑받았습니다. 특히 요정 퍽의 장난스러운 연기와 아름다운 의상이 인상적이었습니다.`,
-      cast: ["최드라마 (퍽)", "김연극 (라이샌더)", "이무대 (허미아)", "박연기 (디미트리우스)"],
-      director: "박무대",
-      runtime: "2시간 15분 (인터미션 포함)",
+관객들의 청춘 시절을 떠올리게 하는 따뜻하고 애틋한 작품으로 많은 사랑을 받았습니다.`,
+      cast: ["김연극 (준호)", "이무대 (수진)", "박연기 (민석)", "최드라마 (혜영)"],
+      director: "김예술",
+      runtime: "1시간 40분",
       audience: "전체 관람가",
       ticketPrice: "일반 28,000원 / 학생 18,000원",
       isCurrentShow: false,
@@ -115,10 +121,7 @@ export default function PerformanceDetailPage() {
                 홈으로
               </Button>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">아</span>
-                </div>
-                <span className="font-manrope font-bold text-xl text-foreground">극단 아르테</span>
+                <span className="font-manrope font-bold text-xl text-foreground">극단 큰강</span>
               </div>
             </div>
           </div>
@@ -239,7 +242,7 @@ export default function PerformanceDetailPage() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
-                        <p className="text-sm text-muted-foreground">화-일 오후 7:30 / 토-일 오후 2:30 추가</p>
+                        <p className="text-sm text-muted-foreground">토 오후 4시 7시 / 일 오후 4시</p>
                         <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                           <Ticket className="mr-2 h-4 w-4" />
                           티켓 예매하기
@@ -261,7 +264,7 @@ export default function PerformanceDetailPage() {
                       </div>
                       <div>
                         <span className="font-medium">제작: </span>
-                        <span className="text-muted-foreground">극단 아르테</span>
+                        <span className="text-muted-foreground">극단 큰강</span>
                       </div>
                     </div>
                   </CardContent>
