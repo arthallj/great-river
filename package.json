@@ -2,11 +2,15 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://arthallj.github.io/great-river",
   "scripts": {
     "build": "next build",
+    "export": "next export",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "predeploy": "npm run build && cp -f out/index.html out/404.html",
+    "deploy": "gh-pages -b gh-pages -d out -f"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -65,6 +69,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "1.3.3",

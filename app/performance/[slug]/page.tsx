@@ -1,18 +1,4 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
-import { useParams, useRouter } from "next/navigation"
-import Image from "next/image"
-
-export default function PerformanceDetailPage() {
-  const params = useParams()
-  const router = useRouter()
-  const slug = params.slug as string
-
-  const performances = {
+const performances = {
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",
       startDate: "2025년 8월 23일",
@@ -298,6 +284,22 @@ export default function PerformanceDetailPage() {
       isCurrentShow: false,
     },
   }
+
+export function generateStaticParams() {
+  return Object.keys(performances).map((slug) => ({ slug }))
+}
+export const dynamicParams = false
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+
+export default async function PerformanceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+
+  
   const performance = performances[slug as keyof typeof performances]
 
   if (!performance) {
@@ -305,7 +307,12 @@ export default function PerformanceDetailPage() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">공연을 찾을 수 없습니다</h1>
-          <Button onClick={() => router.push("/")}>홈으로 돌아가기</Button>
+          <Link href="/">
+            <Button variant="ghost" size="sm">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              홈으로
+            </Button>
+          </Link>
         </div>
       </div>
     )
@@ -323,10 +330,12 @@ export default function PerformanceDetailPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" onClick={() => router.push("/")}>
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                홈으로
-              </Button>
+              <Link href="/">
+                <Button variant="ghost" size="sm">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  홈으로
+                </Button>
+              </Link>
               <div className="flex items-center space-x-2">
                 <span className="font-manrope font-bold text-xl text-foreground">극단 큰강</span>
               </div>
@@ -477,19 +486,25 @@ export default function PerformanceDetailPage() {
                         <div
                           key={relatedPerf.slug}
                           className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg cursor-pointer hover:bg-muted/50 transition-colors"
-                          onClick={() => router.push(`/performance/${relatedPerf.slug}`)}
+                          // onClick={() => router.push(`/performance/${relatedPerf.slug}`)}
                         >
-                          <Image
-                            src={relatedPerf.image || "/placeholder.svg"}
-                            alt={relatedPerf.title}
-                            width={50}
-                            height={50}
-                            className="w-12 h-12 object-cover rounded"
-                          />
-                          <div className="flex-1">
-                            <div className="font-medium text-sm">{relatedPerf.title}</div>
-                            <div className="text-xs text-muted-foreground">{relatedPerf.description}</div>
-                          </div>
+                        <Link
+                            key={relatedPerf.slug}
+                            href={`/performance/${relatedPerf.slug}`}
+                            className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
+                          >
+                            <Image
+                              src={relatedPerf.image || "/placeholder.svg"}
+                              alt={relatedPerf.title}
+                              width={50}
+                              height={50}
+                              className="w-12 h-12 object-cover rounded"
+                            />
+                            <div className="flex-1">
+                              <div className="font-medium text-sm">{relatedPerf.title}</div>
+                              <div className="text-xs text-muted-foreground">{relatedPerf.description}</div>
+                            </div>
+                          </Link>
                         </div>
                       ))}
                     </div>

@@ -16,8 +16,8 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "극단 아르테 | Theater Company Arte",
-  description: "창의적이고 감동적인 연극을 선보이는 극단 아르테입니다.",
+  title: "극단 큰강",
+  description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
   generator: "v0.app",
 }
 
