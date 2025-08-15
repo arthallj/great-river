@@ -267,7 +267,7 @@ export default function TheaterHomePage() {
       title: "네 잘못이 아냐",
       slug: "not-your-fault",
       startDate: "2019년 9월 21일",
-      endDate: "2019년 9월 2일",
+      endDate: "2019년 9월 22일",
       venue: "소극장 봄",
       image: "/IMG_4332.JPG",
       description: "네 잘못이 아냐는 창작극",
