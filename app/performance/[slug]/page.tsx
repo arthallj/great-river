@@ -400,13 +400,15 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                         height={450}
                         className="w-full h-auto object-contain rounded-md"
                       />
-                      <Image
-                        src={performance.detailImage ? `${prefix}${performance.detailImage}` : `${prefix}/placeholder.svg`}
-                        alt={performance.title}
-                        width={800}
-                        height={450}
-                        className="w-full h-auto object-contain rounded-md"
-                      />
+                      {performance.detailImage && (
+                        <Image
+                          src={`${prefix}${performance.detailImage}`}
+                          alt={performance.title}
+                          width={800}
+                          height={450}
+                          className="w-full h-auto object-contain rounded-md"
+                        />
+                      )}
                       {performance.fullDescription.split("\n\n").map((paragraph, index) => (
                         <p key={index} className="text-muted-foreground leading-relaxed mb-4">
                           {paragraph}
