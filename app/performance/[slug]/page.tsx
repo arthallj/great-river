@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+
+const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
 const performances = {
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",
@@ -391,14 +394,14 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   <CardContent>
                     <div className="prose prose-gray max-w-none">
                       <Image
-                        src={performance.image || "/placeholder.svg"}
+                        src={performance.image ? `${prefix}${performance.image}` : `${prefix}/placeholder.svg`}
                         alt={performance.title}
                         width={800}
                         height={450}
                         className="w-full h-auto object-contain rounded-md"
                       />
                       <Image
-                        src={performance.detailImage || "/placeholder.svg"}
+                        src={performance.detailImage ? `${prefix}${performance.detailImage}` : `${prefix}/placeholder.svg`}
                         alt={performance.title}
                         width={800}
                         height={450}
@@ -516,7 +519,7 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                           className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
                         >
                           <Image
-                            src={relatedPerf.image || "/placeholder.svg"}
+                            src={relatedPerf.image ? `${prefix}${relatedPerf.image}` : `${prefix}/placeholder.svg`}
                             alt={relatedPerf.title}
                             width={50}
                             height={50}
