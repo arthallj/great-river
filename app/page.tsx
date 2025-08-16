@@ -24,110 +24,117 @@ export default function TheaterHomePage() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, []);
 
-  const photosPerPage = 13
+  useEffect(() => {
+    scrollToSection("gallery")
+  }, [currentPage]);
+
+  useEffect(() => {
+    scrollToSection("past-performances")
+  }, [currentPerformancePage]);
+
+  const photosPerPage = 13;
   const allPhotos = [
-    "/	IMG_4268.JPG		",
-    "/	IMG_4276.JPG		",
-    "/	IMG_4277.JPG		",
-    "/	IMG_4278.JPG		",
-    "/	IMG_4279.JPG		",
-    "/	IMG_4280.JPG		",
-    "/	IMG_4281.JPG		",
-    "/	IMG_4282.JPG		",
-    "/	IMG_4283.JPG		",
-    "/	IMG_4284.JPG		",
-    "/	IMG_4285.JPG		",
-    "/	IMG_4286.JPG		",
-    "/	IMG_4287.JPG		",
-    "/	IMG_4288.JPG		",
-    "/	IMG_4289.JPG		",
-    "/	IMG_4290.JPG		",
-    "/	IMG_4291.JPG		",
-    "/	IMG_4292.JPG		",
-    "/	IMG_4293.JPG		",
-    "/	IMG_4294.JPG		",
-    "/	IMG_4295.JPG		",
-    "/	IMG_4296.JPG		",
-    "/	IMG_4297.JPG		",
-    "/	IMG_4298.JPG		",
-    "/	IMG_4299.JPG		",
-    "/	IMG_4300.JPG		",
-    "/	IMG_4301.JPG		",
-    "/	IMG_4302.JPG		",
-    "/	IMG_4303.JPG		",
-    "/	IMG_4304.JPG		",
-    "/	IMG_4305.JPG		",
-    "/	IMG_4306.JPG		",
-    "/	IMG_4307.JPG		",
-    "/	IMG_4308.JPG		",
-    "/	IMG_4309.JPG		",
-    "/	IMG_4310.JPG		",
-    "/	IMG_4311.JPG		",
-    "/	IMG_4312.JPG		",
-    "/	IMG_4313.JPG		",
-    "/	IMG_4314.JPG		",
-    "/	IMG_4315.JPG		",
-    "/	IMG_4316.JPG		",
-    "/	IMG_4317.JPG		",
-    "/	IMG_4318.JPG		",
-    "/	IMG_4319.JPG		",
-    "/	IMG_4320.JPG		",
-    "/	IMG_4321.JPG		",
-    "/	IMG_4322.JPG		",
-    "/	IMG_4323.JPG		",
-    "/	IMG_4324.JPG		",
-    "/	IMG_4325.JPG		",
-    "/	IMG_4326.JPG		",
-    "/	IMG_4335.JPG		",
-    "/	IMG_4336.JPG		",
-    "/	IMG_4337.JPG		",
-    "/	IMG_4338.JPG		",
-    "/	IMG_4339.JPG		",
-    "/	IMG_4340.JPG		",
-    "/	IMG_4341.JPG		",
-    "/	IMG_4342.JPG		",
-    "/	IMG_4343.JPG		",
-    "/	IMG_4344.JPG		",
-    "/	IMG_4345.JPG		",
-    "/	IMG_4346.JPG		",
-    "/	IMG_4347.JPG		",
-    "/	IMG_4348.JPG		",
-    "/	IMG_4349.JPG		",
-    "/	IMG_4350.JPG		",
-    "/	IMG_4351.JPG		",
-    "/	IMG_4352.JPG		",
-    "/	IMG_4353.JPG		",
-    "/	IMG_4354.JPG		",
-    "/	IMG_4355.JPG		",
-    "/	IMG_4356.JPG		",
-    "/	IMG_4357.JPG		",
-    "/	IMG_4358.JPG		",
-    "/	IMG_4359.JPG		",
-    "/	IMG_4360.JPG		",
-    "/	IMG_4361.JPG		",
-    "/	IMG_4362.JPG		",
-    "/	IMG_4363.JPG		",
-    "/	IMG_4364.JPG		",
-    "/	IMG_4365.JPG		",
-    "/	IMG_4366.JPG		",
-    "/	IMG_4367.JPG		",
-    "/	IMG_4368.JPG		",
-    "/	IMG_4369.JPG		",
-    "/	IMG_4370.JPG		",
-    "/	IMG_4371.JPG		",
-    "/	IMG_4372.JPG		",
-    "/	IMG_4373.JPG		",
-    "/	IMG_4374.JPG		",
-    "/	IMG_4375.JPG		",
-    "/	IMG_4376.JPG		",
-    "/	IMG_4377.JPG		",
-    "/	IMG_4378.JPG		",
-    "/	IMG_4379.JPG		",
-    "/	IMG_4380.JPG		",
-    "/	IMG_4381.JPG		",
-    "/	IMG_4382.JPG		",
+    "/IMG_4276.JPG",
+    "/IMG_4277.JPG",
+    "/IMG_4278.JPG",
+    "/IMG_4279.JPG",
+    "/IMG_4280.JPG",
+    "/IMG_4281.JPG",
+    "/IMG_4282.JPG",
+    "/IMG_4283.JPG",
+    "/IMG_4284.JPG",
+    "/IMG_4285.JPG",
+    "/IMG_4286.JPG",
+    "/IMG_4287.JPG",
+    "/IMG_4288.JPG",
+    "/IMG_4289.JPG",
+    "/IMG_4290.JPG",
+    "/IMG_4291.JPG",
+    "/IMG_4292.JPG",
+    "/IMG_4293.JPG",
+    "/IMG_4294.JPG",
+    "/IMG_4295.JPG",
+    "/IMG_4296.JPG",
+    "/IMG_4297.JPG",
+    "/IMG_4298.JPG",
+    "/IMG_4299.JPG",
+    "/IMG_4300.JPG",
+    "/IMG_4301.JPG",
+    "/IMG_4302.JPG",
+    "/IMG_4303.JPG",
+    "/IMG_4304.JPG",
+    "/IMG_4305.JPG",
+    "/IMG_4306.JPG",
+    "/IMG_4307.JPG",
+    "/IMG_4308.JPG",
+    "/IMG_4309.JPG",
+    "/IMG_4310.JPG",
+    "/IMG_4311.JPG",
+    "/IMG_4312.JPG",
+    "/IMG_4313.JPG",
+    "/IMG_4314.JPG",
+    "/IMG_4315.JPG",
+    "/IMG_4316.JPG",
+    "/IMG_4317.JPG",
+    "/IMG_4318.JPG",
+    "/IMG_4319.JPG",
+    "/IMG_4320.JPG",
+    "/IMG_4321.JPG",
+    "/IMG_4322.JPG",
+    "/IMG_4323.JPG",
+    "/IMG_4324.JPG",
+    "/IMG_4325.JPG",
+    "/IMG_4326.JPG",
+    "/IMG_4335.JPG",
+    "/IMG_4336.JPG",
+    "/IMG_4337.JPG",
+    "/IMG_4338.JPG",
+    "/IMG_4339.JPG",
+    "/IMG_4340.JPG",
+    "/IMG_4341.JPG",
+    "/IMG_4342.JPG",
+    "/IMG_4343.JPG",
+    "/IMG_4344.JPG",
+    "/IMG_4345.JPG",
+    "/IMG_4346.JPG",
+    "/IMG_4347.JPG",
+    "/IMG_4348.JPG",
+    "/IMG_4349.JPG",
+    "/IMG_4350.JPG",
+    "/IMG_4351.JPG",
+    "/IMG_4352.JPG",
+    "/IMG_4353.JPG",
+    "/IMG_4354.JPG",
+    "/IMG_4355.JPG",
+    "/IMG_4356.JPG",
+    "/IMG_4357.JPG",
+    "/IMG_4358.JPG",
+    "/IMG_4359.JPG",
+    "/IMG_4360.JPG",
+    "/IMG_4361.JPG",
+    "/IMG_4362.JPG",
+    "/IMG_4363.JPG",
+    "/IMG_4364.JPG",
+    "/IMG_4365.JPG",
+    "/IMG_4366.JPG",
+    "/IMG_4367.JPG",
+    "/IMG_4368.JPG",
+    "/IMG_4369.JPG",
+    "/IMG_4370.JPG",
+    "/IMG_4371.JPG",
+    "/IMG_4372.JPG",
+    "/IMG_4373.JPG",
+    "/IMG_4374.JPG",
+    "/IMG_4375.JPG",
+    "/IMG_4376.JPG",
+    "/IMG_4377.JPG",
+    "/IMG_4378.JPG",
+    "/IMG_4379.JPG",
+    "/IMG_4380.JPG",
+    "/IMG_4381.JPG",
+    "/IMG_4382.JPG",
   ]
 
   const totalPages = Math.ceil(allPhotos.length / photosPerPage)
@@ -283,6 +290,9 @@ export default function TheaterHomePage() {
   const startPerformanceIndex = (currentPerformancePage - 1) * performancePerPage
   const currentPerformances = allPerformances.slice(startPerformanceIndex, startPerformanceIndex + performancePerPage)
 
+  const scrollToSection = (id: string) => {
+   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -324,7 +334,7 @@ export default function TheaterHomePage() {
         <div
           className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70"
           style={{
-            backgroundImage: `url('${prefix}/IMG_4268.JPG')`,
+            backgroundImage: `url('${prefix}/IMG_4218.JPG')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -417,7 +427,7 @@ export default function TheaterHomePage() {
       {/* Past Performances */}
       <section id="past-performances" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-manrope text-3xl font-bold text-center mb-12">지난 공연</h2>
+          <h2 className="font-manrope text-3xl font-bold text-center mb-12 mt-6">지난 공연</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {currentPerformances.map((performance, index) => (
               <Card
@@ -459,7 +469,9 @@ export default function TheaterHomePage() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setCurrentPerformancePage((prev) => Math.max(prev - 1, 1))}
+                onClick={() => {
+                  setCurrentPerformancePage((prev) => Math.max(prev - 1, 1)) 
+                }}
                 disabled={currentPerformancePage === 1}
                 className="flex items-center"
               >
@@ -473,7 +485,9 @@ export default function TheaterHomePage() {
                     key={page}
                     variant={currentPerformancePage === page ? "default" : "outline"}
                     size="sm"
-                    onClick={() => setCurrentPerformancePage(page)}
+                    onClick={() => {
+                      setCurrentPerformancePage(page)
+                    }}
                     className="w-10 h-10"
                   >
                     {page}
@@ -484,7 +498,9 @@ export default function TheaterHomePage() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setCurrentPerformancePage((prev) => Math.min(prev + 1, totalPerformancePages))}
+                onClick={() => {
+                  setCurrentPerformancePage((prev) => Math.min(prev + 1, totalPerformancePages))
+                }}
                 disabled={currentPerformancePage === totalPerformancePages}
                 className="flex items-center"
               >
