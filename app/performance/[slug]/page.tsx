@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Clock, ArrowLeft, Users, Star, Ticket } from "lucide-react"
+import { Calendar, MapPin, Clock, ArrowLeft, ArrowRight, Users, Star, Ticket } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -351,12 +351,23 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
               <Link href="/">
                 <Button variant="ghost" size="sm">
                   <ArrowLeft className="h-4 w-4 mr-2" />
-                  홈으로
                 </Button>
               </Link>
-              <div className="flex items-center space-x-2">
-                <span className="font-manrope font-bold text-xl text-foreground">극단 큰강</span>
+            </div>
+            <div className="flex items-center">
+              <div className="flex items-center space-x-2">  
+              <img
+                src={`${prefix}/logo-bl.png`}
+                alt="극단 큰강 로고"
+                className="h-10 w-auto"
+                // onClick={() => window.location.href = `${prefix}/`}
+              />
               </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" size="sm" disabled>
+                <ArrowRight className="h-4 w-4 mr-2 opacity-0" />
+              </Button>
             </div>
           </div>
         </div>

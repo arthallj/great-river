@@ -319,7 +319,8 @@ export default function TheaterHomePage() {
             <img
               src={`${prefix}/logo-bl.png`}
               alt="극단 큰강 로고"
-              className="h-10 w-auto"
+              className="h-10 w-auto cursor-pointer"
+              onClick={() => window.location.href = `${prefix}/`}
             />
             </div>
             <div className="hidden md:flex items-center space-x-6">
