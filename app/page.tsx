@@ -4,7 +4,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useState, useEffect } from "react"
+import { useRef, useState, useEffect } from "react"
 
 import { Calendar, MapPin, Clock, Ticket, ChevronLeft, ChevronRight, X, Star, Diamond, Target } from "lucide-react"
 
@@ -15,6 +15,9 @@ export default function TheaterHomePage() {
   const [currentPerformancePage, setCurrentPerformancePage] = useState(1)
   const [selectedImage, setSelectedImage] = useState< string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
+
+  const isFirstPerformancePage = useRef(true)
+  const isFirstGalleryPage = useRef(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +30,18 @@ export default function TheaterHomePage() {
   }, []);
 
   useEffect(() => {
+    if (isFirstGalleryPage.current) {
+      isFirstGalleryPage.current = false
+      return
+    }
     scrollToSection("gallery")
   }, [currentPage]);
 
   useEffect(() => {
+    if (isFirstPerformancePage.current) {
+      isFirstPerformancePage.current = false
+      return
+    }
     scrollToSection("past-performances")
   }, [currentPerformancePage]);
 
@@ -334,7 +345,7 @@ export default function TheaterHomePage() {
         <div
           className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70"
           style={{
-            backgroundImage: `url('${prefix}/IMG_4218.JPG')`,
+            backgroundImage: `url('${prefix}/IMG_4281.JPG')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
