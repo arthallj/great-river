@@ -309,14 +309,15 @@ export default function TheaterHomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
       <nav
-        className={`border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+        className={`w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
           isScrolled ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="container mx-auto px-4 py-4">
+        {/* <div className="container mx-auto px-4 py-4"> */}
+        <div className="w-full max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <img
@@ -430,7 +431,7 @@ export default function TheaterHomePage() {
 
       {/* Current Performance */}
       <section id="performances" className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-4">
           <div className="text-center mb-12 mt-12">
             <Badge className="mb-4 bg-accent text-accent-foreground">현재 공연</Badge>
             <h2 className="font-manrope text-4xl font-bold text-foreground mb-4">한 여름 밤의 꿈</h2>
@@ -487,7 +488,7 @@ export default function TheaterHomePage() {
 
       {/* Past Performances */}
       <section id="past-performances" className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-4">
           <h2 className="font-manrope text-3xl font-bold text-center mb-12 mt-6">지난 공연</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {currentPerformances.map((performance, index) => (
@@ -574,7 +575,7 @@ export default function TheaterHomePage() {
 
       {/* About Section */}
       <section id="about" className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-manrope text-3xl font-bold mt-12 mb-8">극단 큰강 소개</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -613,7 +614,7 @@ export default function TheaterHomePage() {
 
       {/* Gallery Section */}
       <section id="gallery" className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
+        <div className="w-full max-w-7xl mx-auto px-4 text-center">
           <h2 className="font-manrope text-3xl font-bold mt-12 mb-8">사진 모음</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             극단 큰강의 다양한 공연 순간들과 무대 뒤 이야기를 만나보세요
@@ -706,8 +707,8 @@ export default function TheaterHomePage() {
 
       {/* Contact Section */}
       <section id="contact" className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-manrope text-3xl font-bold text-center mb-12">문의</h2>
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <h2 className="font-manrope text-3xl font-bold text-center mb-12 mt-6">문의</h2>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               극단 큰강에 대해 궁금한 점이 있으시면 언제든지 문의해주세요.
@@ -730,7 +731,7 @@ export default function TheaterHomePage() {
 
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-manrope font-bold text-xl mb-4">극단 큰강</h3>
