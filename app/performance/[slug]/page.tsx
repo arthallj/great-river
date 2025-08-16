@@ -32,9 +32,38 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
     )
   }
 
-  const relatedPerformances = Object.entries(performancesInfo)
-    .filter(([key]) => key !== slug)
-    .slice(0, 10)
+  const performanceEntries = Object.entries(performancesInfo)
+  const currentIndex = performanceEntries.findIndex(([key]) => key === slug)
+
+  const MAX_EACH = 5
+  const TOTAL = 10
+  const n = performanceEntries.length
+
+  let beforeCount = Math.min(MAX_EACH, currentIndex)
+  let afterCount = Math.min(MAX_EACH, n - currentIndex - 1)
+
+  let beforeStart = currentIndex - beforeCount
+  const beforeEnd = currentIndex
+  const afterStart = currentIndex + 1
+  let afterEnd = currentIndex + 1 + afterCount
+
+  // If one side has fewer than 5, take the remainder from the other side to make TOTAL (up to available)
+  let deficit = TOTAL - (beforeCount + afterCount)
+  if (deficit > 0 && beforeCount < MAX_EACH) {
+    const canTakeFromAfter = Math.min(deficit, n - afterEnd)
+    afterEnd += canTakeFromAfter
+    deficit -= canTakeFromAfter
+  }
+  if (deficit > 0 && afterCount < MAX_EACH) {
+    const canTakeFromBefore = Math.min(deficit, beforeStart)
+    beforeStart -= canTakeFromBefore
+    deficit -= canTakeFromBefore
+  }
+
+  const relatedPerformances = performanceEntries
+    .slice(beforeStart, beforeEnd)
+    .concat(performanceEntries.slice(afterStart, afterEnd))
+    .slice(0, TOTAL)
     .map(([key, perf]) => ({ slug: key, ...perf }))
 
   return (
@@ -218,20 +247,20 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   <CardHeader>
                     <CardTitle className="font-manrope">다른 공연 보기</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
+                  <CardContent className="px-3">
+                    <div className="space-y-1">
                       {relatedPerformances.map((relatedPerf) => (
                         <Link
                           key={relatedPerf.slug}
                           href={`/performance/${relatedPerf.slug}`}
-                          className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
+                          className="flex items-center space-x-2 p-1 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
                         >
                           <Image
                             src={relatedPerf.image ? `${relatedPerf.image}` : `/placeholder.svg`}
                             alt={relatedPerf.title}
-                            width={50}
-                            height={50}
-                            className="w-12 h-12 object-cover rounded"
+                            width={100}
+                            height={150}
+                            className="w-16 h-18 object-contain rounded"
                           />
                           <div className="flex-1">
                             <div className="font-medium text-sm">{relatedPerf.title}</div>
