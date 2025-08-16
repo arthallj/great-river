@@ -129,7 +129,7 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   <CardContent>
                     <div className="prose prose-gray max-w-none">
                       <Image
-                        src={performance.image ? `${performance.image}` : `/placeholder.svg`}
+                        src={performance.posterImage ? `${performance.posterImage}` : `/placeholder.svg`}
                         alt={performance.title}
                         width={800}
                         height={450}
@@ -256,7 +256,7 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                           className="flex items-center space-x-2 p-1 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
                         >
                           <Image
-                            src={relatedPerf.image ? `${relatedPerf.image}` : `/placeholder.svg`}
+                            src={relatedPerf.posterImage ? `${relatedPerf.posterImage}` : `/placeholder.svg`}
                             alt={relatedPerf.title}
                             width={100}
                             height={150}
