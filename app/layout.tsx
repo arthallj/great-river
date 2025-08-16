@@ -3,42 +3,32 @@ import type { Metadata } from "next"
 import { Geist, Manrope } from "next/font/google"
 import "./globals.css"
 
-const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
-const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || ""
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || "";
 
 const geist = Geist({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-geist",
-})
+});
 
 const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
-})
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: "극단 큰강",
   description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
-  generator: "v0.app",
-  icons: { icon: `${prefix}/favicon.ico` },
+  icons: { icon: `/favicon.ico` },
     openGraph: {
     title: "극단 큰강",
     description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
-    images: [`${siteOrigin}${prefix}/logo-blue.jpeg`],
-    url: `${siteOrigin}${prefix}/`,
-    // images: [
-    //   {
-    //     url: `${prefix}/logo-blue.jpeg`,
-    //     width: 1250,
-    //     height: 561,
-    //     alt: "극단 큰강 대표 이미지",
-    //   },
-    // ],
+    images: [`${siteOrigin}/logo-blue.jpeg`],
+    url: `${siteOrigin}/`,
   },
-}
+};
 
 export default function RootLayout({
   children,
@@ -50,4 +40,4 @@ export default function RootLayout({
       <body className="font-sans">{children}</body>
     </html>
   )
-}
+};

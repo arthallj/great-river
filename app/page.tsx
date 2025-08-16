@@ -7,8 +7,6 @@ import { useRef, useState, useEffect } from "react"
 
 import { Calendar, MapPin, Clock, Ticket, ChevronLeft, ChevronRight, X, Star, Diamond, Target } from "lucide-react"
 
-const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
-
 export default function TheaterHomePage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [currentPerformancePage, setCurrentPerformancePage] = useState(1)
@@ -321,10 +319,10 @@ export default function TheaterHomePage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <img
-                src={`${prefix}/logo-bl.png`}
+                src={`/logo-bl.png`}
                 alt="극단 큰강 로고"
                 className="h-10 w-auto cursor-pointer"
-                onClick={() => window.location.href = `${prefix}/`}
+                onClick={() => window.location.href = `/`}
               />
             </div>
             {/* 햄버거 버튼 (모바일에서만 보임) */}
@@ -396,7 +394,7 @@ export default function TheaterHomePage() {
         <div
           className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70"
           style={{
-            backgroundImage: `url('${prefix}/IMG_4281.JPG')`,
+            backgroundImage: `url('/IMG_4281.JPG')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -404,7 +402,7 @@ export default function TheaterHomePage() {
         <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-center space-x-2 mb-8">
             <img
-              src={`${prefix}/logo-wh.png`}
+              src={`/logo-wh.png`}
               alt="극단 큰강 로고"
               className="h-26 w-auto mr-2"
             />
@@ -444,11 +442,11 @@ export default function TheaterHomePage() {
             <div
               className="order-2 md:order-1 cursor-pointer flex justify-center"
               onClick={() => {
-                window.location.href = `${prefix}/performance/midsummer-nights-dream`
+                window.location.href = `/performance/midsummer-nights-dream`
               }}
             >
               <img
-                src={`${prefix}/IMG_4269.JPG`}
+                src={`/IMG_4269.JPG`}
                 alt="한 여름 밤의 꿈 포스터"
                 className="rounded-lg shadow-lg max-w-xs w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
               />
@@ -474,7 +472,7 @@ export default function TheaterHomePage() {
                 <Button
                   className="bg-primary hover:bg-primary/90"
                   onClick={() => {
-                    window.location.href = `${prefix}/performance/midsummer-nights-dream`
+                    window.location.href = `/performance/midsummer-nights-dream`
                   }}
                 >
                   <Ticket className="mr-2 w-4 h-4" />
@@ -496,12 +494,12 @@ export default function TheaterHomePage() {
                 key={index}
                 className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
                 onClick={() => {
-                  window.location.href = `${prefix}/performance/${performance.slug}`
+                  window.location.href = `/performance/${performance.slug}`
                 }}
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={performance.image ? `${prefix}${performance.image}` : `${prefix}/placeholder.svg`}
+                    src={performance.image ? `${performance.image}` : `/placeholder.svg`}
                     alt={performance.title}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
@@ -630,7 +628,7 @@ export default function TheaterHomePage() {
                 >
                   <div className="relative overflow-hidden rounded-lg bg-white shadow-sm hover:shadow-lg transition-all duration-300">
                       <img
-                        src={photo ? `${prefix}${photo.trim()}` : `${prefix}/placeholder.svg`}
+                        src={photo ? `${photo.trim()}` : `/placeholder.svg`}
                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -697,7 +695,7 @@ export default function TheaterHomePage() {
               <X className="w-4 h-4" />
             </Button>
             <img
-              src={selectedImage ? `${prefix}${selectedImage.trim()}` : `${prefix}/placeholder.svg`}
+              src={selectedImage ? `${selectedImage.trim()}` : `/placeholder.svg`}
               className="max-h-[90vh] max-w-full object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
