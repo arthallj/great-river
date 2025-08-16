@@ -18,7 +18,9 @@ const nextConfig = {
   images: { unoptimized: true },
   trailingSlash: true,
   env: { 
-    NEXT_PUBLIC_SITE_ORIGIN: isProd ? "https://gdkg.kr" : "http://localhost:3000"
+    NEXT_PUBLIC_SITE_ORIGIN: isProd 
+      ? "https://gdkg.kr" 
+      : `http://localhost:${process.env.PORT || 3000}`
   },
 };
 
