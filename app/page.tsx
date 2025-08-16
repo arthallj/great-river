@@ -56,8 +56,8 @@ export default function TheaterHomePage() {
   const allPerformances = Object.entries(performancesInfo).map(
     ([slug, data]: [string, any]) => ({ ...data, slug })
   );
+  const currentPerformance = allPerformances.find((p: any) => p.isCurrentShow);
   const pastPerformances = allPerformances.filter((p: any) => !p.isCurrentShow);
-
   const totalPerformancePages = Math.ceil(pastPerformances.length / performancePerPage);
   const startPerformanceIndex = (currentPerformancePage - 1) * performancePerPage;
   const currentPerformances = pastPerformances.slice(startPerformanceIndex, startPerformanceIndex + performancePerPage);
@@ -188,48 +188,43 @@ export default function TheaterHomePage() {
         <div className="w-full max-w-7xl mx-auto px-4">
           <div className="text-center mb-12 mt-12">
             <Badge className="mb-4 bg-accent text-accent-foreground">현재 공연</Badge>
-            <h2 className="font-manrope text-4xl font-bold text-foreground mb-4">한 여름 밤의 꿈</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              셰익스피어의 불멸의 걸작을 현대적 감각으로 재해석한 극단 큰강의 새로운 작품
-            </p>
+            <h2 className="font-manrope text-4xl font-bold text-foreground mb-4">{currentPerformance?.title ?? "현재 공연"}</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{currentPerformance?.description ?? "현재 진행 중인 공연 정보는 곧 업데이트됩니다."}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
             <div
               className="order-2 md:order-1 cursor-pointer flex justify-center"
-              onClick={() => {
-                window.location.href = `/performance/midsummer-nights-dream`
-              }}
+              onClick={() => { if (currentPerformance?.slug) { window.location.href = `/performance/${currentPerformance.slug}` } }}
             >
               <img
-                src={`/IMG_4269.JPG`}
-                alt="한 여름 밤의 꿈 포스터"
+                src={currentPerformance?.image ? `${currentPerformance.image}` : `/placeholder.svg`}
+                alt={currentPerformance?.title ?? "현재 공연 포스터"}
                 className="rounded-lg shadow-lg max-w-xs w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="order-1 md:order-2 space-y-6">
               <div className="flex items-center text-muted-foreground">
                 <Calendar className="mr-3 w-5 h-5" />
-                <span>2025년 8월 23일 - 2025년 8월 24일</span>
+                <span>{currentPerformance ? `${currentPerformance.startDate} - ${currentPerformance.endDate}` : "일정 업데이트 예정"}</span>
               </div>
               <div className="flex items-center text-muted-foreground">
                 <MapPin className="mr-3 w-5 h-5" />
-                <span>극장 봄</span>
+                <span>{currentPerformance?.venue ?? "장소 미정"}</span>
               </div>
-              <div className="flex items-center text-muted-foreground">
-                <Clock className="mr-3 w-5 h-5" />
-                <span>토 오후 4시 7시 / 일 오후 4시</span>
-              </div>
+              {currentPerformance?.time && (
+                <div className="flex items-center text-muted-foreground">
+                  <Clock className="mr-3 w-5 h-5" />
+                  <span>{currentPerformance.time}</span>
+                </div>
+              )}
               <p className="text-foreground leading-relaxed">
-                사랑과 질투, 혼란과 변신이 뒤엉킨 셰익스피어의 고전을 배우 극단의 무대 뒤를 배경으로 재해석했습니다.
-                무대와 현실이 뒤섞이는 순간, 연극 속 연극의 매혹이 펼쳐집니다.
+                {currentPerformance.fullDescription ?? "현재 공연에 대한 자세한 설명은 곧 업데이트됩니다."}
               </p>
               <div className="flex gap-4">
                 <Button
                   className="bg-primary hover:bg-primary/90"
-                  onClick={() => {
-                    window.location.href = `/performance/midsummer-nights-dream`
-                  }}
+                  onClick={() => { if (currentPerformance?.slug) { window.location.href = "/performance/" + currentPerformance.slug } }}
                 >
                   <Ticket className="mr-2 w-4 h-4" />
                   상세보기
