@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -15,6 +14,7 @@ export default function TheaterHomePage() {
   const [currentPerformancePage, setCurrentPerformancePage] = useState(1)
   const [selectedImage, setSelectedImage] = useState< string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const isFirstPerformancePage = useRef(true)
   const isFirstGalleryPage = useRef(true)
@@ -24,6 +24,9 @@ export default function TheaterHomePage() {
       const scrollTop = window.scrollY
       setIsScrolled(scrollTop > 100) // 100px 이상 스크롤하면 헤더 표시
     }
+
+    // 마운트 시 바로 한 번 실행
+    handleScroll()
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -316,13 +319,26 @@ export default function TheaterHomePage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-            <img
-              src={`${prefix}/logo-bl.png`}
-              alt="극단 큰강 로고"
-              className="h-10 w-auto cursor-pointer"
-              onClick={() => window.location.href = `${prefix}/`}
-            />
+              <img
+                src={`${prefix}/logo-bl.png`}
+                alt="극단 큰강 로고"
+                className="h-10 w-auto cursor-pointer"
+                onClick={() => window.location.href = `${prefix}/`}
+              />
             </div>
+            {/* 햄버거 버튼 (모바일에서만 보임) */}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label="메뉴 열기"
+            >
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+                <rect y="4" width="24" height="2" rx="1" fill="currentColor" />
+                <rect y="11" width="24" height="2" rx="1" fill="currentColor" />
+                <rect y="18" width="24" height="2" rx="1" fill="currentColor" />
+              </svg>
+            </button>
+            {/* 데스크탑 메뉴 */}
             <div className="hidden md:flex items-center space-x-6">
               <a href="#performances" className="text-muted-foreground hover:text-accent transition-colors">
                 공연
@@ -338,6 +354,39 @@ export default function TheaterHomePage() {
               </a>
             </div>
           </div>
+          {/* 모바일 메뉴 드롭다운 */}
+          {menuOpen && (
+            <div className="flex flex-col md:hidden mt-4 space-y-4 bg-background rounded-lg shadow-lg p-4 items-end text-right">
+              <a
+                href="#performances"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                공연
+              </a>
+              <a
+                href="#about"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                소개
+              </a>
+              <a
+                href="#gallery"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                사진
+              </a>
+              <a
+                href="#contact"
+                className="text-muted-foreground hover:text-accent transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                문의
+              </a>
+            </div>
+          )}
         </div>
       </nav>
 
