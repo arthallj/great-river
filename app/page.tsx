@@ -198,7 +198,7 @@ export default function TheaterHomePage() {
               onClick={() => { if (currentPerformance?.slug) { window.location.href = `/performance/${currentPerformance.slug}` } }}
             >
               <img
-                src={currentPerformance?.image ? `${currentPerformance.image}` : `/placeholder.svg`}
+                src={currentPerformance?.posterImage ? `${currentPerformance.posterImage}` : `/placeholder.svg`}
                 alt={currentPerformance?.title ?? "현재 공연 포스터"}
                 className="rounded-lg shadow-lg max-w-xs w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
               />
@@ -250,7 +250,7 @@ export default function TheaterHomePage() {
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={performance.image ? `${performance.image}` : `/placeholder.svg`}
+                    src={performance.posterImage ? `${performance.posterImage}` : `/placeholder.svg`}
                     alt={performance.title}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
