@@ -1,6 +1,6 @@
 "use client"
 import { galleryPhotoFileNames } from "@/data/gallery"
-import { performancesInfo } from "@/data/performance"
+import { IPerformancesInfo, performancesInfo } from "@/data/performance"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -54,10 +54,10 @@ export default function TheaterHomePage() {
 
   const performancePerPage = 6;
   const allPerformances = Object.entries(performancesInfo).map(
-    ([slug, data]: [string, any]) => ({ ...data, slug })
+    ([slug, data]: [string, IPerformancesInfo]) => ({ ...data, slug })
   );
-  const currentPerformance = allPerformances.find((p: any) => p.isCurrentShow);
-  const pastPerformances = allPerformances.filter((p: any) => !p.isCurrentShow);
+  const currentPerformance = allPerformances.find((p: IPerformancesInfo) => p.isCurrentShow);
+  const pastPerformances = allPerformances.filter((p: IPerformancesInfo) => !p.isCurrentShow);
   const totalPerformancePages = Math.ceil(pastPerformances.length / performancePerPage);
   const startPerformanceIndex = (currentPerformancePage - 1) * performancePerPage;
   const currentPerformances = pastPerformances.slice(startPerformanceIndex, startPerformanceIndex + performancePerPage);
@@ -184,6 +184,7 @@ export default function TheaterHomePage() {
       </section>
 
       {/* Current Performance */}
+      {currentPerformance !== undefined && (
       <section id="performances" className="py-16 bg-muted/30">
         <div className="w-full max-w-7xl mx-auto px-4">
           <div className="text-center mb-12 mt-12">
@@ -219,7 +220,7 @@ export default function TheaterHomePage() {
                 </div>
               )}
               <p className="text-foreground leading-relaxed">
-                {currentPerformance.fullDescription ?? "현재 공연에 대한 자세한 설명은 곧 업데이트됩니다."}
+                {currentPerformance?.fullDescription ?? "현재 공연에 대한 자세한 설명은 곧 업데이트됩니다."}
               </p>
               <div className="flex gap-4">
                 <Button
@@ -234,7 +235,8 @@ export default function TheaterHomePage() {
           </div>
         </div>
       </section>
-
+      )}
+      
       {/* Past Performances */}
       <section id="past-performances" className="py-16">
         <div className="w-full max-w-7xl mx-auto px-4">

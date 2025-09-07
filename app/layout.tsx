@@ -22,11 +22,27 @@ export const metadata: Metadata = {
   title: "극단 큰강",
   description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
   icons: { icon: `/favicon.ico` },
-    openGraph: {
+  openGraph: {
     title: "극단 큰강",
     description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
     images: [`${siteOrigin}/logo-blue.jpeg`],
     url: `${siteOrigin}/`,
+  },
+  keywords: [
+    "극단 큰강",
+    "연극",
+    "공연",
+    "연기",
+    "Theater",
+    "Performing Arts",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
+  alternates: {
+    canonical: siteOrigin || "/",
   },
 };
 

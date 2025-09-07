@@ -1,4 +1,26 @@
-export const performancesInfo = {
+export interface IPerformancesInfo {
+        title: string;
+        startDate: string;
+        endDate: string;
+        time: string;
+        venue: string;
+        posterImage: string;
+        detailImage: string;
+        description: string;
+        fullDescription: string;
+        cast: string[];
+        director: string;
+        writer: string;
+        light: string;
+        design: string;
+        project: string;
+        runtime: string;
+        link: string;
+        isCurrentShow: boolean;
+    };
+
+
+export const performancesInfo : {[key:string]: IPerformancesInfo}= {
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",
       startDate: "2025년 8월 23일",
@@ -19,7 +41,7 @@ export const performancesInfo = {
       project: "프로젝트 유후",
       runtime: "1시간 10분",
       link: "",
-      isCurrentShow: true,
+      isCurrentShow: false,
     },
     "those-below-above": {
       title: "아랫것들의 위",
