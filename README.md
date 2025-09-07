@@ -1,30 +1,12 @@
-# Korean dog website
+# 배포 방법.
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+## 임시 워크트리로 gh-pages 체크아웃(없으면 orphan 브랜치 생성)
+git worktree add /tmp/ghp gh-pages || git checkout --orphan gh-pages
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/andreaschoi-1232s-projects/v0-korean-dog-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/voV4FRnyJfU)
-
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/andreaschoi-1232s-projects/v0-korean-dog-website](https://vercel.com/andreaschoi-1232s-projects/v0-korean-dog-website)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/projects/voV4FRnyJfU](https://v0.app/chat/projects/voV4FRnyJfU)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## out/ 내용을 복사해 커밋/푸시
+rm -rf /tmp/ghp/*
+cp -R out/* /tmp/ghp/
+cd /tmp/ghp
+git add .
+git commit -m "Deploy"
+git push "https://arthallj:${GH_TOKEN}@github.com/arthallj/great-river.git" HEAD:gh-pages --force
