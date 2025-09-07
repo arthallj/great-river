@@ -34,6 +34,8 @@ jobs:
         run: npx imagemin 'public/**/*.{jpg,png}' --out-dir=public || true
 
       - name: Build (Next static export)
+        env:
+          LIGHTNINGCSS_FORCE_WASM: '1'
         run: |
           npm run build
           # 커스텀 도메인 사용 시 CNAME
