@@ -25,7 +25,13 @@ jobs:
           cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        run: npm ci --include=optional
+
+      - name: Rebuild lightningcss (native binary)
+        run: npm rebuild lightningcss --update-binary || true
+
+      - name: Optimize images (optional)
+        run: npx imagemin 'public/**/*.{jpg,png}' --out-dir=public || true
 
       - name: Build (Next static export)
         run: |
@@ -44,6 +50,3 @@ jobs:
           publish_branch: gh-pages
           publish_dir: out
           force_orphan: true
-
-      - name: Optimize images (optional)
-        run: npx imagemin 'public/**/*.{jpg,png}' --out-dir=public || true
