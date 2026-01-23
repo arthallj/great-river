@@ -21,6 +21,27 @@ export interface IPerformancesInfo {
 
 
 export const performancesInfo : {[key:string]: IPerformancesInfo}= {
+  "in-the-burning-darkness":{
+    title: "타오르는 어둠 속에서",
+    startDate: "2026년 2월 7일",
+    endDate: "2026년 2월 8일",
+    time: "토 4시 7시 / 일 4시",
+    venue: "단막극장",
+    posterImage: "/IMG_4784.JPG",
+    detailImage: "",
+    description: "어둠 속에서 빛을 찾는 여정을 그린 작품",
+    fullDescription: `어둠 속에서 빛을 찾는 여정을 그린 작품으로, 인간의 내면과 갈등을 깊이 있게 탐구합니다. 극단 큰강의 독창적인 연출과 배우들의 열연이 어우러져 관객들에게 강렬한 감동을 선사할 것입니다.
+`,
+    cast: ["김지우", "노하윤", "박철희", "서영서", "성규동", "원유진", "이수옥", "이종원", "이현영", "하다운"],
+    director: "오준혁",
+    writer: "안토니오 부에로 바예호",
+    light: "김홍찬",
+    design: "서민지",
+    project: "프로젝트 유후",
+    runtime: "1시간 30분",
+    link: "",
+    isCurrentShow: true,
+  },
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",
       startDate: "2025년 8월 23일",
