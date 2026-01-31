@@ -51,8 +51,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TheaterGroup",
+    name: "극단 큰강",
+    url: siteOrigin,
+    logo: `${siteOrigin}/logo-blue.jpeg`,
+    description: "창의적이고 감동적인 연극을 선보이는 극단 큰강입니다.",
+    foundingDate: "2019",
+    sameAs: [
+      "https://www.somoim.co.kr/51b64868-5f6b-11e9-adec-0a10bedf2a181"
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "KR",
+      addressLocality: "서울"
+    }
+  };
+
   return (
     <html lang="ko" className={`${geist.variable} ${manrope.variable} antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans">{children}</body>
     </html>
   )

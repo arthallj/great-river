@@ -5,7 +5,47 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin, Clock, ArrowLeft, ArrowRight, Users, Star, Ticket } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import type { Metadata } from "next"
 
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://gdkg.kr";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const performance = performancesInfo[slug as keyof typeof performancesInfo];
+
+  if (!performance) {
+    return {
+      title: "공연을 찾을 수 없습니다 | 극단 큰강",
+    };
+  }
+
+  return {
+    title: `${performance.title} | 극단 큰강`,
+    description: performance.fullDescription.substring(0, 160),
+    openGraph: {
+      title: performance.title,
+      description: performance.description,
+      images: [
+        {
+          url: `${siteOrigin}${performance.posterImage}`,
+          width: 1200,
+          height: 630,
+          alt: performance.title,
+        },
+      ],
+      url: `${siteOrigin}/performance/${slug}`,
+      type: 'website',
+    },
+    keywords: [
+      performance.title,
+      "극단 큰강",
+      "연극",
+      "공연",
+      performance.venue,
+      ...performance.cast.slice(0, 5),
+    ],
+  };
+}
 
 export function generateStaticParams() {
   return Object.keys(performancesInfo).map((slug) => ({ slug }));
@@ -66,8 +106,43 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
     .slice(0, TOTAL)
     .map(([key, perf]) => ({ slug: key, ...perf }))
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TheaterEvent",
+    name: performance.title,
+    description: performance.fullDescription,
+    image: `${siteOrigin}${performance.posterImage}`,
+    startDate: performance.startDate,
+    endDate: performance.endDate,
+    location: {
+      "@type": "Place",
+      name: performance.venue,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "KR",
+      },
+    },
+    performer: performance.cast.map((actor) => ({
+      "@type": "Person",
+      name: actor,
+    })),
+    director: {
+      "@type": "Person",
+      name: performance.director,
+    },
+    organizer: {
+      "@type": "TheaterGroup",
+      name: "극단 큰강",
+      url: siteOrigin,
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Navigation */}
       <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
