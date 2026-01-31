@@ -8,9 +8,9 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "predeploy": "npm run build && touch out/.nojekyll && cp -f out/index.html out/404.html",
+    "predeploy": "npm run build && node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && node -e \"require('fs').copyFileSync('out/index.html','out/404.html')\"",
     "deploy": "gh-pages -b gh-pages -d out -f --dotfiles",
-    "clean": "rm -rf .next out"
+    "clean": "node -e \"const fs=require('fs');['.next','out'].forEach(d=>{if(fs.existsSync(d))fs.rmSync(d,{recursive:true})})\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
