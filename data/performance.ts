@@ -40,7 +40,7 @@ export const performancesInfo : {[key:string]: IPerformancesInfo}= {
     project: "프로젝트 유후",
     runtime: "1시간 30분",
     link: "",
-    isCurrentShow: true,
+    isCurrentShow: false,
   },
     "midsummer-nights-dream": {
       title: "한 여름 밤의 꿈",

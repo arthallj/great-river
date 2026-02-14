@@ -1,4 +1,9 @@
   export const galleryPhotoFileNames = [    
+    "/IMG_4808.JPG",
+    "/IMG_4811.JPG",
+    "/IMG_4812.JPG",
+    "/IMG_4813.JPG",
+    "/IMG_4805.JPG",
     "/IMG_4526.JPG",
     "/IMG_4525.JPG",
     "/IMG_4463.JPG",
