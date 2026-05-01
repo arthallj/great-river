@@ -288,32 +288,58 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
+                      {performance.director.length > 0 && (
                       <div>
                         <span className="font-medium">연출: </span>
                         <span className="text-muted-foreground">{performance.director}</span>
                       </div>
+                      )}
+                      {performance.writer.length > 0 && (
                       <div>
                         <span className="font-medium">작 (각색): </span>
                         <span className="text-muted-foreground">{performance.writer}</span>
                       </div>
+                      )}
+                      {performance.assistantDirector.length > 0 && (
+                      <div>
+                        <span className="font-medium">조연출: </span>
+                        <span className="text-muted-foreground">{performance.assistantDirector}</span>
+                      </div>
+                      )}
+                      {performance.light.length > 0 && (
                       <div>
                         <span className="font-medium">조명: </span>
                         <span className="text-muted-foreground">{performance.light}</span>
                       </div>
-
+                      )}
+                      {performance.design.length > 0 && (
                       <div>
                         <span className="font-medium">디자인: </span>
                         <span className="text-muted-foreground">{performance.design}</span>
                       </div>
-
+                      )}
+                      {performance.operator.length > 0 && (
+                      <div>
+                        <span className="font-medium">오퍼: </span>
+                        <span className="text-muted-foreground">{performance.operator}</span>
+                      </div>
+                      )}
+                      {performance.project.length > 0 && (
                       <div>
                         <span className="font-medium">주최: </span>
                         <span className="text-muted-foreground">{performance.project}</span>
                       </div>
+                      )}
                       <div>
                         <span className="font-medium">제작: </span>
                         <span className="text-muted-foreground">극단 큰강</span>
                       </div>
+                      {performance.support.length > 0 && (
+                      <div>
+                        <span className="font-medium">후원: </span>
+                        <span className="text-muted-foreground">{performance.support}</span>
+                      </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
