@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://gdkg.kr/sitemap.xml
