@@ -9,18 +9,26 @@ import type { Metadata } from "next"
 
 const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://gdkg.kr";
 
+// "2026년 7월 16일" → "2026-07-16" (구조화 데이터용 ISO 8601). 파싱 실패 시 빈 문자열.
+function toISODate(korDate: string): string {
+  const m = korDate.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+  if (!m) return "";
+  const [, y, mo, d] = m;
+  return `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const performance = performancesInfo[slug as keyof typeof performancesInfo];
 
   if (!performance) {
     return {
-      title: "공연을 찾을 수 없습니다 | 극단 큰강",
+      title: "공연을 찾을 수 없습니다",
     };
   }
 
   return {
-    title: `${performance.title} | 극단 큰강`,
+    title: performance.title,
     description: performance.fullDescription.substring(0, 160),
     openGraph: {
       title: performance.title,
@@ -106,20 +114,26 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
     .slice(0, TOTAL)
     .map(([key, perf]) => ({ slug: key, ...perf }))
 
+  const startISO = toISODate(performance.startDate);
+  const endISO = toISODate(performance.endDate);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TheaterEvent",
     name: performance.title,
     description: performance.fullDescription,
     image: `${siteOrigin}${performance.posterImage}`,
-    startDate: performance.startDate,
-    endDate: performance.endDate,
+    ...(startISO && { startDate: startISO }),
+    ...(endISO && { endDate: endISO }),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
       "@type": "Place",
       name: performance.venue,
       address: {
         "@type": "PostalAddress",
         addressCountry: "KR",
+        addressLocality: "서울",
       },
     },
     performer: performance.cast.map((actor) => ({
@@ -135,6 +149,35 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
       name: "극단 큰강",
       url: siteOrigin,
     },
+    ...(performance.link && {
+      offers: {
+        "@type": "Offer",
+        url: performance.link,
+        availability: performance.isCurrentShow
+          ? "https://schema.org/InStock"
+          : "https://schema.org/SoldOut",
+        ...(startISO && { validFrom: startISO }),
+      },
+    }),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "홈",
+        item: `${siteOrigin}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: performance.title,
+        item: `${siteOrigin}/performance/${slug}/`,
+      },
+    ],
   };
 
   return (
@@ -142,6 +185,10 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Navigation */}
       <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
