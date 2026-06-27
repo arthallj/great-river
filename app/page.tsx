@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useRef, useState, useEffect } from "react"
 
-import { Calendar, MapPin, Clock, Ticket, ChevronLeft, ChevronRight, X, Star, Diamond, Target } from "lucide-react"
+import { Calendar, MapPin, Clock, Ticket, ChevronLeft, ChevronRight, X, Star, Diamond, Target, Instagram } from "lucide-react"
 
 export default function TheaterHomePage() {
   const [currentGalleryPage, setCurrentPage] = useState(1);
@@ -230,6 +230,17 @@ export default function TheaterHomePage() {
                   <Ticket className="mr-2 w-4 h-4" />
                   상세보기
                 </Button>
+                {currentPerformance?.link && (
+                  <Button
+                    asChild
+                    className="bg-accent text-accent-foreground hover:bg-accent/90"
+                  >
+                    <a href={currentPerformance.link} target="_blank" rel="noopener noreferrer">
+                      <Ticket className="mr-2 w-4 h-4" />
+                      예매하기
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
@@ -503,6 +514,22 @@ export default function TheaterHomePage() {
                     className="hover:text-accent transition-colors"
                   >
                     소모임 극단 큰강
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">SNS</h4>
+              <div className="space-y-2 text-primary-foreground/80">
+                <p>
+                  <a
+                    href="https://www.instagram.com/bigriver_theater"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-accent transition-colors"
+                  >
+                    <Instagram className="h-5 w-5" />
+                    @bigriver_theater
                   </a>
                 </p>
               </div>

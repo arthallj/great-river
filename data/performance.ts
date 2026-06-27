@@ -31,7 +31,7 @@ export const performancesInfo : {[key:string]: IPerformancesInfo}= {
     time: "목 8시 / 금 4시 / 토 4시 7시 / 일 4시",
     venue: "플랫폼74",
     posterImage: "/IMG_4983.JPG",
-    detailImage: "",
+    detailImage: "/26006673-02.jpg",
     description: "일상 속에서의 작은 갈등과 화해를 그린 작품",
     fullDescription: `일상 속에서의 작은 갈등과 화해를 그린 작품으로, 현대인의 삶을 깊이 있게 탐구합니다. 극단 큰강의 독창적인 연출과 배우들의 열연이 어우러져 관객들에게 강렬한 감동을 선사할 것입니다.
 `,
@@ -45,7 +45,7 @@ export const performancesInfo : {[key:string]: IPerformancesInfo}= {
     project: "프로젝트 유후",
     runtime: "1시간 15분",
     support: "홍린 스튜디오",
-    link: "",
+    link: "https://nol.yanolja.com/ticket/products/26006673",
     isCurrentShow: true,
   },
   "in-the-burning-darkness":{

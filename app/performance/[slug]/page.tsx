@@ -222,10 +222,6 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                       {performance.fullDescription.split("\n\n").map((paragraph, index) => (
                         <p key={index} className="text-muted-foreground leading-relaxed mb-4">
                           {paragraph}
-                          <br></br>
-                          {performance.link && (
-                            <a href={performance.link} target="_blank" rel="noopener noreferrer">{performance.link}</a>
-                          )}
                         </p>
                       ))}
                     </div>
@@ -279,6 +275,14 @@ export default async function PerformanceDetailPage({ params }: { params: Promis
                         <div className="text-sm text-muted-foreground">{performance.runtime}</div>
                       </div>
                     </div>
+                    {performance.link && (
+                      <Button asChild className="w-full">
+                        <a href={performance.link} target="_blank" rel="noopener noreferrer">
+                          <Ticket className="h-5 w-5" />
+                          예매하기
+                        </a>
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
 
