@@ -46,7 +46,7 @@ export const performancesInfo : {[key:string]: IPerformancesInfo}= {
     runtime: "1시간 15분",
     support: "홍린 스튜디오",
     link: "https://nol.yanolja.com/ticket/products/26006673",
-    isCurrentShow: true,
+    isCurrentShow: false,
   },
   "in-the-burning-darkness":{
     title: "타오르는 어둠 속에서",
