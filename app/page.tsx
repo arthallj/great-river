@@ -340,33 +340,44 @@ export default function TheaterHomePage() {
         <div className="w-full max-w-7xl mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-manrope text-3xl font-bold mt-12 mb-8">극단 큰강 소개</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              극단 큰강은 2019년 창단 이후 대학로 소극장을 중심으로 활동하며, 고전의 현대적 재해석과 동시대 창작극을
+              꾸준히 무대에 올려 온 연극 단체입니다. 셰익스피어의 희극부터 스페인 현대 고전, 오늘의 일상을 담은 창작
+              초연까지 시대와 장르를 가로지르는 레퍼토리로 관객과 만나고 있습니다.
+            </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              2019년 창단된 극단 큰강은 클래식한 작품의 현대적 재해석과 창작 연극을 통해 관객들에게 깊은 감동과 새로운
-              시각을 제공합니다. 우리는 연극이 가진 순수한 힘을 믿으며, 배우와 관객이 함께 만들어가는 살아있는 무대를
-              추구합니다.
+              우리는 연극이 지닌 순수한 힘을 믿습니다. 훈련된 배우의 몸과 목소리, 그리고 관객의 호흡이 한 공간에서
+              만나는 순간에만 태어나는 살아 있는 무대를 추구합니다.
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
                 <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                   <Diamond className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-manrope font-semibold text-lg mb-2">집중과 완성도</h3>
-                <p className="text-muted-foreground">한 기수당 한 공연, 주먹구구식이 아닌 완성도 높은 무대 제작</p>
+                <h3 className="font-manrope font-semibold text-lg mb-2">고전과 창작의 균형</h3>
+                <p className="text-muted-foreground">
+                  셰익스피어부터 부에로 바예호까지 고전을 오늘의 언어로 다시 쓰고, 우리 시대의 이야기를 창작극으로
+                  무대에 올립니다.
+                </p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-manrope font-semibold text-lg mb-2">누구나 참여 가능</h3>
-                <p className="text-muted-foreground">20~30대 배우 지망생부터 직장인·학생까지 열린 참여</p>
+                <h3 className="font-manrope font-semibold text-lg mb-2">앙상블 중심의 연기</h3>
+                <p className="text-muted-foreground">
+                  배우 출신 연출가가 이끄는 아메리칸 액팅 메소드 기반의 훈련으로 인물의 진실에 다가가는 앙상블을
+                  구축합니다.
+                </p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-manrope font-semibold text-lg mb-2">전문성과 즐거움</h3>
+                <h3 className="font-manrope font-semibold text-lg mb-2">한 작품에 대한 집중</h3>
                 <p className="text-muted-foreground">
-                  배우 출신 연출의 아메리칸 액팅 메소드 트레이닝과 함께하는 즐거운 연기 경험
+                  한 시즌에 한 작품, 기획부터 무대 위 마지막 장면까지 모든 역량을 쏟아 완성도 높은 프로덕션을
+                  선보입니다.
                 </p>
               </div>
             </div>
@@ -473,17 +484,17 @@ export default function TheaterHomePage() {
           <h2 className="font-manrope text-3xl font-bold text-center mb-12 mt-6">문의</h2>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              극단 큰강에 대해 궁금한 점이 있으시면 언제든지 문의해주세요.
+              공연 및 협업 관련 문의는 인스타그램 메시지로 남겨 주시면 확인 후 답변드립니다.
             </p>
             <div className="mt-12">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
                 <a
-                  href="https://www.somoim.co.kr/51b64868-5f6b-11e9-adec-0a10bedf2a181"
+                  href="https://www.instagram.com/bigriver_theater"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Ticket className="mr-2 w-4 h-4" />
-                  문의하기
+                  <Instagram className="mr-2 w-4 h-4" />
+                  인스타그램으로 문의하기
                 </a>
               </Button>
             </div>
@@ -494,7 +505,7 @@ export default function TheaterHomePage() {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="w-full max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="font-manrope font-bold text-xl mb-4">극단 큰강</h3>
               <p className="text-primary-foreground/80 leading-relaxed">
@@ -502,21 +513,6 @@ export default function TheaterHomePage() {
                 <br />
                 극단 큰강과 함께하세요.
               </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">연락처</h4>
-              <div className="space-y-2 text-primary-foreground/80">
-                <p>
-                  <a
-                    href="https://www.somoim.co.kr/51b64868-5f6b-11e9-adec-0a10bedf2a181"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent transition-colors"
-                  >
-                    소모임 극단 큰강
-                  </a>
-                </p>
-              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">SNS</h4>

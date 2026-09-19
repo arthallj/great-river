@@ -69,8 +69,7 @@ export default function RootLayout({
     description: siteDescription,
     foundingDate: "2019",
     sameAs: [
-      "https://www.instagram.com/bigriver_theater",
-      "https://www.somoim.co.kr/51b64868-5f6b-11e9-adec-0a10bedf2a181"
+      "https://www.instagram.com/bigriver_theater"
     ],
     address: {
       "@type": "PostalAddress",
